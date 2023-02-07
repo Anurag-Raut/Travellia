@@ -1,0 +1,50 @@
+.h1{
+    /* background-color: red; */
+ 
+}
+.box{
+    height: 100%;
+}
+.places{
+    width: 25%;
+    height:450px;
+    background-color: aqua;
+    position: relative;
+    
+}
+.down-box{
+    display: flex;
+    /* width:800px;
+    height:200px; */
+    /* background-color:aquamarine ; */
+    /* position: absolute;
+    right: 0; */
+
+}
+#map{
+    height: 500px;
+    width: 500px;
+}
+
+   
+.mapp{
+    width: 500px;
+    height: 500px;
+    /* background-color: red; */
+    position: absolute;
+    top: 0;
+    right:0
+
+}
+.list{
+    display: flex;
+    margin:10px;
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    /* position: absolute; */
+    /* right:0; */
+
+
+
+}
