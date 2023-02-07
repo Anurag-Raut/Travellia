@@ -1,0 +1,78 @@
+.scroll-img{
+  
+    width: 500px;
+    height: 500px;
+    
+  
+    right:0;
+    justify-items: right;
+}
+.sec{
+  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    /* position: absolute; */
+
+    margin-bottom:10%;
+}
+.first-sec{
+  padding-top:40vh;
+}
+.third-sec{
+  
+    margin-top: 15%;
+}
+.h1-scroll{
+  
+  font-size:100px
+
+}
+
+.f-text{
+ 
+    font-size: 100px;
+    will-change: scroll-position;
+}
+.lerp-wrap  {
+  
+    /* position:relative; */
+    width:200px;
+    height:100px;
+    display: inline-flex;
+    justify-content:center;
+    align-items:center;
+    font-size: clamp(32px, 3vw, 8vw);
+    background:#fff;
+    margin-top: -20%;
+  }
+  .lerp-2{
+    margin-left: -10%;
+  }
+  .scroll-contain{
+    background-color: #fff;
+    display: block;
+    margin-bottom: 20%;
+    margin-top: 20%;
+    height: auto;
+    z-index: 1;
+    /* background-color: #284b63; */
+  }
+  .fi{
+  
+    height: 100px;
+    opacity: 1;
+    background-color: black;
+    width: 500px;
+    transition: opacity 6s;
+  }
+  .se{
+
+    height: 100px;background-color: black;
+    width: 500px;
+    opacity: 0;
+    transition: opacity 6s;
+  
+  }

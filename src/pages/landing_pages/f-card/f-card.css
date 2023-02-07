@@ -1,0 +1,90 @@
+.lerp-wrap  {
+    /* position:relative;
+    width:200px;
+    height:100px;
+    display: inline-flex;
+    justify-content:center;
+    align-items:center;
+    font-size: clamp(32px, 3vw, 8vw);
+    /* background:#fff; */
+    /* margin-top: -20%;  */
+    background-color: transparent;
+  }
+  .f-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    /* margin-bottom: 40vh;
+    margin-top: 40vh; */
+}
+  .fcard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    margin-top:100vh;
+    margin-bottom:100vh;
+  }
+  .f-card-img1{
+    /* width: 600px; */
+    height: 70%;
+    width: 350vh;
+    z-index: 0;
+    margin-top: 10vh;
+  }
+  .white-box{
+    z-index: 1;
+    background-color: transparent;
+    /* opacity: 0; */
+  }
+.f-text{
+    font-size: 20vh;
+    z-index: 10;
+    display: block;
+}
+.f-text-top{
+    font-size: 10vh;
+    width: 90vh;
+    display: block;
+    margin-bottom: 20vh;
+    z-index: -10;
+}
+.f-text-bottom{
+    font-size: 5vh;
+    display: block;
+    width: 100vh;
+    z-index: -10;
+}
+.f-c-container{
+    /* display: flex; */
+    /* background-color: #a2d2ff; */
+    justify-content: center;
+}
+.re{
+    /* background-color: red; */
+    width: 100vh;
+    height: 150vh;
+    display: flex;
+    align-items: center;
+
+
+}
+.stick{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    /* margin-top: 10vh;
+    margin-bottom:10vh */
+}
+.f-text-feat{
+    font-size: 30vh;
+    /* width: 20vh; */
+    /* margin: 10vh; */
+
+
+}
+.f-sec{
+    margin-top:100vh;
+}
+
