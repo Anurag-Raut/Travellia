@@ -38,6 +38,7 @@ function Places({
   route4,
   updateroute4,
 }) {
+  console.log(List3hook,route3);
   const [place, setPlace] = useState("");
   // useState(()=>{
   const [day1Dur, setday1Dur] = useState("0 h:0 m");
@@ -72,11 +73,9 @@ function Places({
           travelMode: google.maps.TravelMode.DRIVING,
         })
         .then((response) => {
-          // directionsRenderer.setDirections(response);
-          // directionsRenderer.setMap(map);
+ 
           const route =(response.routes[0]);
-          // console.log(response.routes[0]);
-          // console.log(array[0].other.geometry.location)
+
           var dur = 0;
           for (let i = 0; i < route.legs.length; i++) {
             dur += route.legs[i].duration.value;
@@ -87,7 +86,7 @@ function Places({
           H = H / 60;
           H = Math.floor(H);
           M = Math.floor(M);
-          var s = `${H}:${M}`;
+          var s = `${H} h:${M} m`;
 
           if (val === 1) {
             setday1Dur(s);
@@ -107,12 +106,12 @@ function Places({
             setday4Dur(s);
             updateroute4(route);
           }
-          // console.log(distance);
+
         })
         .catch();
     } else {
     }
-    // console.log("hi");
+
   }
 
   function CardClick(props) {
@@ -193,33 +192,33 @@ function Places({
     updateList2Hook(list2);
     updateList3Hook(list3);
     updateList4Hook(list4);
-    // console.log(List1hook)
+
 
     update(List1hook, 1);
     update(List2hook, 2);
     update(List3hook, 3);
     update(List4hook, 4);
-    // setwa(List1hook);
-    // console.log(wa);
+
   }
 
-  // console.log(List1hook);
+
 
   var a = 0;
   return (
     <div class="places-div">
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div class="places ">
-          <Droppable droppableId="main-list">
+        <div class="places " style={{display:'flex',justifyContent:'space-between',width:'90vw'}}>
+          <Droppable droppableId="main-list" >
             {(provided) => (
               <ul
                 className="characters "
+                style={{width:'20vw'}}
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
                 <Paper
                   class="scrollbar scrollbar-primary"
-                  style={{ minWidth: 310, maxHeight: 450, overflow: "auto" }}
+                  style={{ minWidth: '21vw', maxHeight: 450, overflow: "auto" }}
                 >
                   {Mainlisthook.map(({ id, title, other }, index) => {
                     return (
@@ -261,7 +260,7 @@ function Places({
         <div class="down-box">
           <div class="list list1 d-block border border-dark">
             <div>
-              <h1>{day1Dur}</h1>
+              <h1>Day1 :- {day1Dur}</h1>
             </div>
 
             <div class=" list1-div-stay">
@@ -357,7 +356,7 @@ function Places({
 
           <div class="list list1 d-block border border-dark">
             <div>
-              <h1>{day2Dur}</h1>
+              <h1>Day2 :-{day2Dur}</h1>
             </div>
 
             <div class=" list1-div-stay">
@@ -455,7 +454,7 @@ function Places({
 
           <div class="list list1 d-block border border-dark">
             <div>
-              <h1>{day3Dur}</h1>
+              <h1>Day3 :-{day3Dur}</h1>
             </div>
 
             <div class=" list1-div-stay">
@@ -552,7 +551,7 @@ function Places({
           </div>
           <div class="list list1 d-block border border-dark">
             <div>
-              <h1>{day4Dur}</h1>
+              <h1>Day4 :-{day4Dur}</h1>
             </div>
 
             <div class=" list1-div-stay">

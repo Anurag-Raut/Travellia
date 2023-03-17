@@ -23,6 +23,7 @@ function PlaceDetail({ place, map }) {
       function callback(result, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           setReq(result);
+          console.log(result);
 
           result?.opening_hours?.weekday_text
             ? setWeekday(result.opening_hours.weekday_text)
@@ -43,12 +44,13 @@ function PlaceDetail({ place, map }) {
   //   console.log(b);
 
   return (
-    <div class="bordered-indigo  detail">
+    <div class="bordered-indigo  detail" style={{width:'50vw'}}>
       <div class="title">
         <h1>{place.name}</h1>
       </div>
 
-      <div class="Image-div">
+      <div class="Image-div" style={{display:"flex"}}>
+        
         <img
           class="main-img"
           src={req.photos ? req.photos[0].getUrl() : b}
@@ -59,12 +61,19 @@ function PlaceDetail({ place, map }) {
         <div class="rating border border-dark rounded">
           {req?.rating ? <h3>{req.rating}</h3> : ""}
           {req?.rating ? (
-            <Rating
+            <div style={{display:'flex',justifyContent:'space-between'}} >
+               <Rating
               name="half-rating-read"
               value={req.rating ? req.rating : 0}
               precision={0.1}
               readOnly
             />
+
+            <p>{req?.user_ratings_total} ratings</p>
+
+            </div>
+           
+            
           ) : (
             ""
           )}

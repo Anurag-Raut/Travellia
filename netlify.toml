@@ -1,2 +1,8 @@
 [build]
-    functions="functions"
+    functions="function"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+

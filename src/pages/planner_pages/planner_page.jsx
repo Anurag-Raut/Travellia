@@ -20,10 +20,11 @@ function PlanComponents({lscroll,List1hook,updateList1Hook,List2hook,updateList2
    
    useEffect(()=>{
 
-    if(lscroll )lscroll.destroy();
+    lscroll?.destroy();
 
 
    },[])
+   
   
 return(
    

@@ -18,6 +18,7 @@ import Exp from "./exp";
 import Navbar from "../planner_pages/navbar";
 import { duration } from "@mui/material";
 import { useEffect } from "react";
+import ScheduleComp from "./schedule-comp";
 // import ToastContainer from "react-bootstrap";
 // import { Toast } from "react-toastify/dist/components";
 // import { useAuth0 } from "@auth0/auth0-react";
@@ -41,8 +42,23 @@ function Schedule({
   updateroute3,
   route4,
   updateroute4,
-  lscroll
+  lscroll,
+  city,
+  setcity,
+  
+
 }) {
+  var cityName='hemlo';
+  const date = new Date();
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${day}-${month}-${year}`;
+
+
   useEffect(()=>{
 
     if(lscroll )lscroll.destroy();
@@ -70,17 +86,27 @@ function Schedule({
     if (isAuthenticated) {
       e.preventDefault();
       const newdata = {
+        // cityName:cityName,
         List1hook: List1hook,
         List2hook: List2hook,
         List3hook: List3hook,
         List4hook: List4hook,
         useremail: user.email,
+        date: currentDate,
+        route1:route1,
+        route2:route2,
+        route3:route3,
+        route4:route4,
+        cityy:city,
+        
+
+
       };
-      // console.log(newdata);
+      console.log(JSON.stringify(newdata));
       axios
-        .post("/.netlify/functions/api", newdata)
-        .then((response) => console.log(response.data));
-      toast.success("Saved");
+        .post("/.netlify/functions/api", (newdata))
+        .then((response) =>{ console.log(response.data);toast.success("Saved");});
+      
     } else {
       toast.error(
         <div>
@@ -89,7 +115,7 @@ function Schedule({
             class="btn btn-light   active"
             role="button"
             onClick={() =>
-              loginWithRedirect({ redirectUri: "https://travellio.web.app/ab" })
+              loginWithRedirect({ redirectUri:window.location.origin})
             }
           >
             Log In
@@ -207,708 +233,77 @@ function Schedule({
   var dur = 0;
   // console.log(List2hook);
 
-  function fq(e) {
-    return <ListGroup.Item disabled>{e.title}</ListGroup.Item>;
-  }
+ 
   return (
     <div>
-      <div class="p-sc-nav">
-        {!hide ? (
-          <motion.div
-            transition={{ duration: 0.5 }}
-            class="sc-nav"
-            initial={{
-              width: "0",
-            }}
-            exit={{
-              width: "0",
-            }}
-            animate={{
-              width: "auto",
-            }}
-          >
-            <nav class="nav_bar d-inline-flex  navbar navbar-expand-lg navbar-dark bg-dark">
-              <motion.div class=" nav ">
-                <Link class="navbar-brand " to="/">
-                  <h1>Travellia</h1>
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
-        ) : (
-          <motion.div
-            transition={{ duration: 0.5 }}
-            class="sc-nav"
-            initial={{
-              width: "auto",
-            }}
-            exit={{
-              width: "0",
-            }}
-            animate={{
-              width: "0",
-            }}
-          >
-            <nav class="nav_bar d-inline-flex  navbar  ">
-              <motion.div class=" nav ">
-                <Link class="navbar-brand n1" to="/">
-                  <h1>Travellia</h1>
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </div>
+      <ScheduleComp  List1hook={List1hook}
+   
+    List2hook={List2hook}
+   
+    List3hook={List3hook}
+    
+    List4hook={List4hook}
+    route1={route1}
+    route2={route2}
+    route3={route3}
+    route4={route4}
+    hide={hide}
+    sethide={sethide}
 
-      {hide ? (
-        <div class="titles-div">
-          {open1 && List1hook.length ? (
-            <motion.div>
-              <motion.h3
-                initial={{
-                  x: "-100vh",
-                }}
-                exit={{}}
-                animate={{
-                  x: "0",
-                }}
-                transition={{ duration: 0.51 + dur, type: "spring" }}
-                class="title-text"
-              >
-                {List1hook[0].title}
-              </motion.h3>
-              <motion.div class="line-div">
-                <motion.div
-                  initial={{
-                    x: "-100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="vertical_dotted_line"
-                ></motion.div>
-                <motion.div
-                  transition={{ duration: 0.9 + dur, type: "spring" }}
-                  initial={{
-                    x: "100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="duration"
-                >
-                  {route1.legs[0].duration.text}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          ) : open2 && List2hook.length ? (
-            <motion.div>
-              <motion.h3
-                initial={{
-                  x: "-100vh",
-                }}
-                exit={{}}
-                animate={{
-                  x: "0",
-                }}
-                transition={{ duration: 0.51 + dur, type: "spring" }}
-                class="title-text"
-              >
-                {List2hook[0].title}
-              </motion.h3>
-              <motion.div class="line-div">
-                <motion.div
-                  initial={{
-                    x: "-100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="vertical_dotted_line"
-                ></motion.div>
-                <motion.div
-                  transition={{ duration: 0.9 + dur, type: "spring" }}
-                  initial={{
-                    x: "100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="duration"
-                >
-                  {route2.legs[0].duration.text}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          ) : open3 && List3hook.length ? (
-            <motion.div>
-              <motion.h3
-                initial={{
-                  x: "-100vh",
-                }}
-                exit={{}}
-                animate={{
-                  x: "0",
-                }}
-                transition={{ duration: 0.51 + dur, type: "spring" }}
-                class="title-text"
-              >
-                {List3hook[0].title}
-              </motion.h3>
-              <motion.div class="line-div">
-                <motion.div
-                  initial={{
-                    x: "-100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="vertical_dotted_line"
-                ></motion.div>
-                <motion.div
-                  transition={{ duration: 0.9 + dur, type: "spring" }}
-                  initial={{
-                    x: "100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="duration"
-                >
-                  {route3.legs[0].duration.text}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          ) : open4 && List4hook.length ? (
-            <motion.div>
-              <motion.h3
-                initial={{
-                  x: "-100vh",
-                }}
-                exit={{}}
-                animate={{
-                  x: "0",
-                }}
-                transition={{ duration: 0.51 + dur, type: "spring" }}
-                class="title-text"
-              >
-                {List4hook[0].title}
-              </motion.h3>
-              <motion.div class="line-div">
-                <motion.div
-                  initial={{
-                    x: "-100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="vertical_dotted_line"
-                ></motion.div>
-                <motion.div
-                  transition={{ duration: 0.9 + dur, type: "spring" }}
-                  initial={{
-                    x: "100vh",
-                  }}
-                  exit={{
-                    x: "-100vh",
-                  }}
-                  animate={{
-                    x: "0",
-                  }}
-                  class="duration"
-                >
-                  {route4.legs[0].duration.text}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          ) : (
-            <div></div>
-          )}
-
-          {open1 && route1.waypoint_order ? (
-            route1.waypoint_order.map((index) => {
-              dur += 0.2;
-              return (
-                <motion.div>
-                  <motion.h3
-                    initial={{
-                      x: "-100vh",
-                    }}
-                    exit={{
-                      x: "-100vh",
-                    }}
-                    animate={{
-                      x: "0",
-                    }}
-                    transition={{ duration: 0.51 + dur, type: "spring" }}
-                    class="title-text"
-                  >
-                    {List1hook[route1.waypoint_order[index] + 1].title}
-                  </motion.h3>
-                  <motion.div class="line-div">
-                    <motion.div
-                      initial={{
-                        x: "-100vh",
+    />
+       {
+          !hide?
+          <div class="save-div">
+          <Button className="save-btn" variant="dark" onClick={onClickHandle}>
+            Save
+          </Button>
+          <Popup
+            modal
+            trigger={
+              <Button className="save-btn" variant="dark" >
+                Send Directions To Phone
+              </Button>
+            }
+            position=" center"
+          >
+            <div class="popup">
+              <form>
+                <div>
+                  <div class="d-flex">
+                    <h4>Enter email</h4>
+                    <input
+                      type="text"
+                      class="form-control"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
                       }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="vertical_dotted_line"
-                    ></motion.div>
-                    <motion.div
-                      transition={{ duration: 0.9 + dur, type: "spring" }}
-                      initial={{
-                        x: "100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="duration"
+                      placeholder="ex- abc@gmail.com"
+                    />
+                  </div>
+                  <div class="send-button">
+                    <Button
+                      className="send-btn"
+                      variant="dark"
+                      onClick={sendDetails}
                     >
-                      {route1.legs[index + 1].duration.text}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              );
-            })
-          ) : open2 && route2.waypoint_order ? (
-            route2.waypoint_order.map((index) => {
-              dur += 0.2;
-              return (
-                <motion.div>
-                  <motion.h3
-                    initial={{
-                      x: "-100vh",
-                    }}
-                    exit={{
-                      x: "-100vh",
-                    }}
-                    animate={{
-                      x: "0",
-                    }}
-                    transition={{ duration: 0.51 + dur, type: "spring" }}
-                    class="title-text"
-                  >
-                    {List2hook[route2.waypoint_order[index] + 1].title}
-                  </motion.h3>
-                  <motion.div class="line-div">
-                    <motion.div
-                      initial={{
-                        x: "-100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="vertical_dotted_line"
-                    ></motion.div>
-                    <motion.div
-                      transition={{ duration: 0.9 + dur, type: "spring" }}
-                      initial={{
-                        x: "100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="duration"
-                    >
-                      {route2.legs[index + 1].duration.text}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              );
-            })
-          ) : open3 && route3.waypoint_order ? (
-            route3.waypoint_order.map((index) => {
-              dur += 0.2;
-              return (
-                <motion.div>
-                  <motion.h3
-                    initial={{
-                      x: "-100vh",
-                    }}
-                    exit={{
-                      x: "-100vh",
-                    }}
-                    animate={{
-                      x: "0",
-                    }}
-                    transition={{ duration: 0.51 + dur, type: "spring" }}
-                    class="title-text"
-                  >
-                    {List3hook[route3.waypoint_order[index] + 1].title}
-                  </motion.h3>
-                  <motion.div class="line-div">
-                    <motion.div
-                      initial={{
-                        x: "-100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="vertical_dotted_line"
-                    ></motion.div>
-                    <motion.div
-                      transition={{ duration: 0.9 + dur, type: "spring" }}
-                      initial={{
-                        x: "100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="duration"
-                    >
-                      {route3.legs[index + 1].duration.text}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              );
-            })
-          ) : open4 && route4.waypoint_order && List4hook.length ? (
-            route4.waypoint_order.map((index) => {
-              dur += 0.2;
-              return (
-                <motion.div>
-                  <motion.h3
-                    initial={{
-                      x: "-100vh",
-                    }}
-                    exit={{
-                      x: "-100vh",
-                    }}
-                    animate={{
-                      x: "0",
-                    }}
-                    transition={{ duration: 0.51 + dur, type: "spring" }}
-                    class="title-text"
-                  >
-                    {route4.waypoint_order[index] + 1 < List4hook.length
-                      ? List4hook[route4.waypoint_order[index] + 1].title
-                      : ""}
-                  </motion.h3>
-                  <motion.div class="line-div">
-                    <motion.div
-                      initial={{
-                        x: "-100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="vertical_dotted_line"
-                    ></motion.div>
-                    <motion.div
-                      transition={{ duration: 0.9 + dur, type: "spring" }}
-                      initial={{
-                        x: "100vh",
-                      }}
-                      exit={{
-                        x: "-100vh",
-                      }}
-                      animate={{
-                        x: "0",
-                      }}
-                      class="duration"
-                    >
-                      {route4.legs[index + 1].duration.text}
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              );
-            })
-          ) : (
-            <div></div>
-          )}
-          {open1 && List1hook.length ? (
-            <motion.h3
-              initial={{
-                x: "-100vh",
-              }}
-              exit={{}}
-              animate={{
-                x: "0",
-              }}
-              transition={{ duration: 0.51 + dur, type: "spring" }}
-              class="title-text"
-            >
-              {List1hook[0].title}
-            </motion.h3>
-          ) : open2 && List2hook.length ? (
-            <motion.h3
-              initial={{
-                x: "-100vh",
-              }}
-              exit={{}}
-              animate={{
-                x: "0",
-              }}
-              transition={{ duration: 0.51 + dur, type: "spring" }}
-              class="title-text"
-            >
-              {List2hook[0].title}
-            </motion.h3>
-          ) : open3 && List3hook.length ? (
-            <motion.h3
-              initial={{
-                x: "-100vh",
-              }}
-              exit={{}}
-              animate={{
-                x: "0",
-              }}
-              transition={{ duration: 0.51 + dur, type: "spring" }}
-              class="title-text"
-            >
-              {List3hook[0].title}
-            </motion.h3>
-          ) : open4 && List4hook.length ? (
-            <motion.h3
-              initial={{
-                x: "-100vh",
-              }}
-              exit={{}}
-              animate={{
-                x: "0",
-              }}
-              transition={{ duration: 0.51 + dur, type: "spring" }}
-              class="title-text"
-            >
-              {List4hook[0].title}
-            </motion.h3>
-          ) : (
-            <div></div>
-          )}
+                      Send Directions
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </Popup>
         </div>
-      ) : (
-        <div></div>
-      )}
-
-      {/* <Button className="send-btn" variant="dark" onClick={sendDetails}>
-            Send Directions
-             </Button> */}
-
-      <motion.div layout>
-        <motion.div layout class="day-row">
-          <motion.div layout class="day-col">
-            {hide ? (
-              open1 ? (
-                <motion.div
-                  layout
-                  onClick={() => {
-                    setOpen1(false);
-                    console.log(open1);
-                    sethide(false);
-                  }}
-                  class="1 expanded-card"
-                >
-                  <Exp array={route1} day="Day 1" />
-                </motion.div>
-              ) : (
-                <div></div>
-              )
-            ) : (
-              <motion.div
-                layout="true"
-                class="1 day-card"
-                onClick={() => {
-                  setOpen1(true);
-                  sethide(true);
-                }}
-                whileHover={{ scale: 1.5 }}
-                whileTap={{ scale: 1.3 }}
-              >
-                <h1 class="1 dtext">Day1</h1>
-              </motion.div>
-            )}
-            {hide ? (
-              open2 ? (
-                <motion.div
-                  layout
-                  onClick={() => {
-                    setOpen2(false);
-                    sethide(false);
-                  }}
-                  class="2 expanded-card"
-                >
-                  <Exp array={route2} day="Day 2" />
-                </motion.div>
-              ) : (
-                <div></div>
-              )
-            ) : (
-              <motion.div
-                layout="true"
-                class="2 day-card"
-                onClick={() => {
-                  setOpen2(true);
-                  sethide(true);
-                }}
-                whileHover={{ scale: 1.5 }}
-                whileTap={{ scale: 1.3 }}
-              >
-                <h1 class="2 dtext">Day2</h1>
-              </motion.div>
-            )}
-          </motion.div>
-          <motion.div class="day-col">
-            {hide ? (
-              open3 ? (
-                <motion.div
-                  layout
-                  transition={{ type: "spring" }}
-                  onClick={() => {
-                    setOpen3(false);
-                    sethide(false);
-                  }}
-                  class="3 expanded-card"
-                >
-                  {" "}
-                  <Exp array={route3} day="Day 3" />
-                </motion.div>
-              ) : (
-                <div></div>
-              )
-            ) : (
-              <motion.div
-                layout="true"
-                class="3 day-card"
-                onClick={() => {
-                  setOpen3(true);
-                  sethide(true);
-                }}
-                whileHover={{ scale: 1.5 }}
-                whileTap={{ scale: 1.3 }}
-              >
-                <h1 class="3 dtext">Day3</h1>
-              </motion.div>
-            )}
-
-            {hide ? (
-              open4 ? (
-                <motion.div
-                  layout
-                  transition={{ default: { ease: "linear" } }}
-                  onClick={() => {
-                    setOpen4(false);
-                    console.log(open4);
-                    sethide(false);
-                  }}
-                  class="expanded-card"
-                >
-                  {" "}
-                  <Exp array={route4} day="Day 4" />
-                </motion.div>
-              ) : (
-                <div></div>
-              )
-            ) : (
-              <motion.div
-                layout="true"
-                class="4 day-card"
-                onClick={() => {
-                  setOpen4(true);
-                  sethide(true);
-                }}
-                whileHover={{ scale: 1.5 }}
-                whileTap={{ scale: 1.3 }}
-              >
-                <h1 class="dtext">Day4</h1>
-              </motion.div>
-            )}
-          </motion.div>
-        </motion.div>
-      </motion.div>
-      {
-        !hide?
-        <div class="save-div">
-        <Button className="save-btn" variant="dark" onClick={onClickHandle}>
-          Save
-        </Button>
-        <Popup
-          modal
-          trigger={
-            <Button className="save-btn" variant="dark" >
-              Send Directions To Phone
-            </Button>
-          }
-          position=" center"
-        >
-          <div class="popup">
-            <form>
-              <div>
-                <div class="d-flex">
-                  <h4>Enter email</h4>
-                  <input
-                    type="text"
-                    class="form-control"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    placeholder="ex- abc@gmail.com"
-                  />
-                </div>
-                <div class="send-button">
-                  <Button
-                    className="send-btn"
-                    variant="dark"
-                    onClick={sendDetails}
-                  >
-                    Send Directions
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </Popup>
-      </div>
-        :
-        <div></div>
-      }
-     
-
-      <ToastContainer />
+          :
+          <div></div>
+        }
+       
+  
+        <ToastContainer />
     </div>
-
+    
+    
+    
   
   );
 }

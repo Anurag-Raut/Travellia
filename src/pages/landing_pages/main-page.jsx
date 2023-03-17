@@ -33,6 +33,7 @@ import NewFooter from "./new-footer";
 import FirstPage from "./firstpage";
 
 function App() {
+  const [city,setcity]=useState('');
   const ref = useRef(null);
   var loadin = 1;
   const [loading, setloading] = useState(1);
@@ -61,31 +62,53 @@ function App() {
   const options = {
     smooth: true,
   };
-  if (
-    window.location.href==='https://travellio.web.app/'||
-    window.location.href==='https://travellio.web.app/#'||
-    window.location.href==='http://localhost:3000/'||
-    window.location.href==='https://travelliaa.netlify.app/'||
-    window.location.href==='https://travelliaa.netlify.app/#'
+  Loco({ start: 1,lscroll:lscroll,setlscroll:setlscroll});
 
-
-   ) {
-    // console.log('elllo')
-  Loco({ start: 1, lscroll: lscroll, setlscroll: setlscroll });
-   }
- 
-
-  window.addEventListener("load", (event) => {
-    // console.log(document.location.href)
+  window.addEventListener("hashchange", (event) => {
+    console.log(document.location.href)
     
 
     if (
-      window.location.href==='https://travellio.web.app/'||
-      window.location.href==='https://travellio.web.app/#'||
-      window.location.href==='http://localhost:3000/'||
-      window.location.href==='https://travelliaa.netlify.app/'||
-      window.location.href==='https://travelliaa.netlify.app/#'
+      
+      document.location.href==='https://travellio.web.app/'||
+      document.location.href==='https://travellio.web.app/#'||
+      document.location.href==='http://localhost:3000/'||
+      document.location.href==='http://localhost:8888/'||
+      document.location.href==="https://travelliaa.netlify.app/"||
+      document.location.href==="https://travelliaa.netlify.app"||
+      document.location.href==='https://travelliaa.netlify.app/'
     ) {
+      //  Loco({ start: 1,lscroll:lscroll,setlscroll:setlscroll});
+     
+      document.location.reload();
+    }
+    else{
+      console.log('heloooo again');
+      // Loco({ start: 0,lscroll,setlscroll });
+      // lscroll?.destroy();
+    }
+  });
+
+ 
+ 
+ 
+
+  // window.addEventListener("popstate", (event) => {
+    // console.log(document.location.href)
+
+    
+
+    if (
+      
+      document.location.href==='https://travellio.web.app/#'||
+      document.location.href==='https://travellio.web.app/'||
+      document.location.href==='http://localhost:3000/'||
+      document.location.href==='http://localhost:3002/'||
+      document.location.href==="https://travelliaa.netlify.app/"||
+      document.location.href==="https://travelliaa.netlify.app"||
+      document.location.href==='https://travelliaa.netlify.app/'
+    ) {
+     
      
       setTimeout(() => {
         console.log('hemlooooooooooooo')
@@ -107,11 +130,12 @@ function App() {
     }
     else{
       console.log('heloooo again');
-      // Loco({ start: 0, lscroll: lscroll, setlscroll: setlscroll });
-      // lscroll.destroy();
+      // Loco({ start: 0 });
+      // lscroll?.destroy();
     }
-  });
- 
+  // },);
+
+   
 
 
   const [Mainlisthook, updateMainHook] = useState([]);
@@ -134,7 +158,7 @@ function App() {
         <Router>
           <div>
             <Routes>
-              <Route path="/history" element={<History />} />
+              <Route path="/history" element={<History  lscroll={lscroll} />} />
 
               <Route
                 path="/plan-trip"
@@ -177,6 +201,8 @@ function App() {
                       updateList3Hook={updateList3Hook}
                       List4hook={List4hook}
                       updateList4Hook={updateList4Hook}
+                      city={city}
+                      setcity={setcity}
                     />
                   </div>
                 }
@@ -224,6 +250,8 @@ function App() {
                       route4={route4}
                       updateroute4={updateroute4}
                       loadin={loading}
+                      city={city}
+                      setcity={setcity}
                     />
 
                     <ScrollSec />

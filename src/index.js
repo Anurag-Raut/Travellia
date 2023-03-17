@@ -13,11 +13,9 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useState } from 'react';
-
-gsap.registerPlugin(ScrollTrigger);
-
-
-
+import {Blob} from 'buffer';
+import { ProSidebarProvider } from 'react-pro-sidebar';
+import $ from 'jquery'; 
 
 
 
@@ -27,8 +25,7 @@ window.addEventListener('resize', ()=>{
   var element=document.getElementById('nav-id')
   element.style.setProperty("background-color", "#24262b");
   var offsets = document.getElementById('hero').getBoundingClientRect();
-var top = offsets.top;
-var left = offsets.left;
+
 // console.log(top,left);
 
 }
@@ -38,11 +35,21 @@ var left = offsets.left;
 
   
 );
+window.addEventListener('locationchange', (event) => {
+  // console.log(document.location.href)
+
+ 
+  if(window.location.href==='https://travelliaa.netlify.app'  ||  window.location.href==='https://travelliaa.netlify.app/'  || window.location.href==='https://travellio.web.app/'  ||window.location.href==='http://localhost:3000/' || window.location.href==='https://travellio.web.app'){
+    document.location.reload();
+  
+  }
+})
+
 window.addEventListener('popstate', (event) => {
   // console.log(document.location.href)
 
  
-  if(window.location.href==='https://travellio.web.app/'  || window.location.href==='http://localhost:3000/' || window.location.href==='https://travellio.web.app'){
+  if(window.location.href==='https://travelliaa.netlify.app'  ||  window.location.href==='https://travelliaa.netlify.app/'  || window.location.href==='https://travellio.web.app/'  ||window.location.href==='http://localhost:3000/' || window.location.href==='https://travellio.web.app'){
     document.location.reload();
   
   }
@@ -56,7 +63,9 @@ ReactDOM.render(
   clientId="JWxNeEBulHjuKXWGVbawnnWmA5uCV0um"
   redirectUri={window.location.origin}
 >
+
   <App />
+
   
   </Auth0Provider>,
   document.getElementById("main-page")

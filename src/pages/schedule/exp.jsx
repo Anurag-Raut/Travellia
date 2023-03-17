@@ -59,7 +59,7 @@ return(
                       >
                         <motion.div class="dur-text">Total duration</motion.div>
                         <motion.div class="dur-text value">
-                          {props.array.legs ?getDur(props.array.legs) : '0 Hrs 0 M'}
+                          {props?.array?.legs ?getDur(props?.array?.legs) : '0 Hrs 0 M'}
                         </motion.div>
                       </motion.div>
                       <motion.div
@@ -81,7 +81,7 @@ return(
                           Total distance
                         </motion.div>
                         <motion.div class="dist-text value">
-                          {props.array.legs ?getDist(props.array.legs):'0'} Km
+                          {props?.array?.legs ?getDist(props?.array?.legs):'0'} Km
                         </motion.div>
                       </motion.div>
                     </motion.div>

@@ -25,7 +25,7 @@ function NavBar() {
   
     
       <nav id='nav-id' class="nav_bar d-inline-flex  navbar navbar-expand-lg navbar-dark bg " style={{position:'fixed'}}  data-scroll-sticky='true' >
-        <div class="nave d-flex">
+        <div class="nave d-flex" style={{width:'90vw',display:'flex',justifyContent:'space-between'}}>
           <div class="brandandbutton">
          
             <a class="navbar-brand" href="#">
@@ -56,9 +56,7 @@ function NavBar() {
                 <Link class="nav-item nav-link" to="/history">
                   History
                 </Link>
-                <a class="nav-item nav-link disabled" href="#">
-                  Disabled
-                </a>
+                
               </div>
             </div>
           </div>

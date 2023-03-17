@@ -12,12 +12,14 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { toast ,ToastContainer} from "react-toastify";
 import {  useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import Loco from "../locomotive";
 // import 
 // import { start } from "repl";
 gsap.registerPlugin(ScrollTrigger);
 
-function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hook,updateList3Hook,List4hook,updateList4Hook,Mainlisthook,updateMainlisthook,route1,updateroute1,route2,updateroute2,route3,updateroute3,route4,updateroute4 }) {
+function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hook,updateList3Hook,List4hook,updateList4Hook,Mainlisthook,updateMainlisthook,route1,updateroute1,route2,updateroute2,route3,updateroute3,route4,updateroute4,city,setcity }) {
   const navigate = useNavigate();
+
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
@@ -38,14 +40,18 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
+    setcity(value);
     setCoordinates(latLng);
   };
   function onclickHandle() {
     console.log('hi');
+   
     if (coordinates.lat === null || coordinates.lng === null) {
       toast.error("Enter Location");
       return;
     }
+
+    // Loco({ start :0});
  
 
     updateList1Hook([]);
@@ -69,7 +75,11 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
       });
     },500)
    
+      
 
+
+     
+    
   
   
   }
@@ -99,6 +109,7 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
                       id="form"
                       class="form-control"
                       {...getInputProps({ placeholder: "Type City" })}
+                      // onChange={setcity(this?.value)}
                     />
                     
                     {/* <label class="form-label" for="form12">Example label</label> */}

@@ -32,68 +32,11 @@ function Mycomponent({
 
  
 }) {
- useEffect(()=>{
-  return()=>{
-    // Loco(0);
-  }
- })
+
   
 
 
-  function handleOnDragEnd(result) {
-    
-    const { source, destination } = result;
-    if (!destination) return;
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-    var add,
-      mainList = Mainlisthook,
-      list1 = List1hook,
-      list2 = List2hook,
-      list3 = List3hook,
-      list4 = List4hook;
-    if (source.droppableId === "main-list") {
-      add = mainList[source.index];
-      mainList.splice(source.index, 1);
-    } else if (source.droppableId === "list1") {
-      add = list1[source.index];
-      list1.splice(source.index, 1);
-    } else if (source.droppableId === "list2") {
-      add = list2[source.index];
-      list2.splice(source.index, 1);
-    } else if (source.droppableId === "list3") {
-      add = list3[source.index];
-      list3.splice(source.index, 1);
-    } else if (source.droppableId === "list4") {
-      add = list3[source.index];
-      list4.splice(source.index, 1);
-    }
-
-    if (destination.droppableId === "main-list") {
-      mainList.splice(destination.index, 0, add);
-    } else if (destination.droppableId === "list1") {
-      list1.splice(destination.index, 0, add);
-    } else if (destination.droppableId === "list2") {
-      list2.splice(destination.index, 0, add);
-    } else if (destination.droppableId === "list3") {
-      list3.splice(destination.index, 0, add);
-    } else if (destination.droppableId === "list4") {
-      list4.splice(destination.index, 0, add);
-    }
-
-    updateMainHook(mainList);
-    updateList1Hook(list1);
-    updateList2Hook(list2);
-    updateList3Hook(list3);
-    updateList4Hook(list4);
-
-    setwa(List1hook);
-    // console.log(wa);;
-  }
+ 
 
 
 
@@ -133,7 +76,7 @@ function Mycomponent({
   var lngn=0;
   const { state } = useLocation();
   // console.log(state);
-  const { lat, lng} = state;
+  const { lat, lng,city} = state;
   const [apiData, setApiData] = useState('');
   const[index,setindex]=useState();
   // console.log(date)
@@ -235,7 +178,7 @@ function Mycomponent({
 
   const handleApiLoaded = (map, maps) => {
     setMapu(map);
-    var service = new google.maps.places.PlacesService(map);
+    var service = new window.google.maps.places.PlacesService(map);
     function callback1(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         // console.log(results);
@@ -252,7 +195,7 @@ function Mycomponent({
       }
     }
     function callback2(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
+      if (status == google?.maps?.places?.PlacesServiceStatus?.OK) {
         for (var i = 0; i < results.length; i++) {
           const w = [];
           w.push({
@@ -329,6 +272,7 @@ function Mycomponent({
 
     createMarker(coords);
   };
+  
 
   return (
     <div class="planner-container" data-scroll-section>
@@ -336,13 +280,14 @@ function Mycomponent({
       <button type="button" onClick={onClickHandle} class="btn btn-info">NEXT</button>
       </div>
 
-      <div class="mapp">
+      <div id='map' class="mapp" style={{height:'0px',width:'0px'}}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDv7s0o1RX7hCsOYu3rQ0PR4TLaUlqqwgk" }}
           defaultCenter={coords}
           center={coords}
           defaultZoom={14}
-          margin={[50, 50, 50, 50]}
+          // margin={[50, 50, 50, 50]}
+          style={{opacity:1,width:'0px',height:'0px'}}
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         ></GoogleMapReact>

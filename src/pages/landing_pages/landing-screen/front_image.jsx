@@ -4,16 +4,14 @@ import SearchBox from "./search-box";
 import Loco from "../locomotive";
 import './fi.css';
 
-function FrontImage({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hook,updateList3Hook,List4hook,updateList4Hook,Mainlisthook,updateMainlisthook,route1,updateroute1,route2,updateroute2,route3,updateroute3,route4,updateroute4,loadin }){
+function FrontImage({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hook,updateList3Hook,List4hook,updateList4Hook,Mainlisthook,updateMainlisthook,route1,updateroute1,route2,updateroute2,route3,updateroute3,route4,updateroute4,loadin,city,setcity }){
 
    
     return(
         <div id="hero" className="parallax fi-sec" data-depth='0.5' data-scroll-section >
            
              
-            <h1 class='img-text hello'>
-                Plan Your Travel
-             </h1>
+           
              <SearchBox   List1hook={List1hook}
             updateList1Hook={updateList1Hook}
             List2hook={List2hook}
@@ -31,7 +29,11 @@ function FrontImage({List1hook,updateList1Hook,List2hook,updateList2Hook,List3ho
             route3={route3}
             updateroute3={updateroute3}
             route4={route4}
-            updateroute4={updateroute4}/>
+            updateroute4={updateroute4}
+            city={city}
+            setcity={setcity}
+            
+            />
              <img data-scroll data-scroll-repeat data-scroll-call='event1' class='front-img' src={require('./fi.jpg')} alt="" >
                 
              </img>
