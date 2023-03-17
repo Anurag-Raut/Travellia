@@ -282,7 +282,7 @@ function Mycomponent({
 
       <div id='map' class="mapp" style={{height:'0px',width:'0px'}}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDv7s0o1RX7hCsOYu3rQ0PR4TLaUlqqwgk" }}
+          bootstrapURLKeys={{ key: GAPI }}
           defaultCenter={coords}
           center={coords}
           defaultZoom={14}
