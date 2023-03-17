@@ -12,6 +12,7 @@ import { Button } from "react-bootstrap";
 import DropBox from "./dropBox";
 import Loco from "../landing_pages/locomotive";
 
+
 function Mycomponent({
   List1hook,
   updateList1Hook,
@@ -282,7 +283,7 @@ function Mycomponent({
 
       <div id='map' class="mapp" style={{height:'0px',width:'0px'}}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: GAPI }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GAPI }}
           defaultCenter={coords}
           center={coords}
           defaultZoom={14}
