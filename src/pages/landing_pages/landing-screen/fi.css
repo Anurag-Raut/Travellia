@@ -54,16 +54,16 @@
     background-color: transparent;
     height: auto;
     /* height: 100vh; */
-    scale: 10000%;
+    /* scale: 10000%; */
     /* padding-top: 200px; */
    
     background-color: white;
 
 }
 .search-box{
-    scale: -10000%;
+    scale: 100%;
 }
 #search-box-id{
 
-scale: -10000%;
+scale: 100%;
 }

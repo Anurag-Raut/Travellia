@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 // import { motion } from "framer-motion";
 import Form from "react-bootstrap/Form";
-import { motion ,Variants} from "framer-motion";
+import { motion ,transform,Variants} from "framer-motion";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -67,7 +67,7 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
       
       element.style.setProperty("background-color", "white");
       // element.style.setProperty("opacity", "0.1");
-      element.style.setProperty("transition", "2s");
+      element.style.setProperty("transition", "1s");
       <ToastContainer />;
     setTimeout(()=>{
       navigate("/plan-trip", {
@@ -86,7 +86,7 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
 
 
   return (
-    <div id='search-id' class='search-box-div'>
+    <motion.div initial={{scale:"10000%",backgroundColor:'transparent'}} animate={{scale:"100%"}} transition={{delay:1.8,duration:2}} style={{willChange:transform}} id='search-id' class='search-box-div'>
  
    
    
@@ -144,7 +144,7 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
                         <motion.div class='search-child'  whileHover={{
                           scale: 1.02,
                           // opacity:0.5,
-                          transition: { duration: 0.5 },
+                          transition: { duration: 0.6 },
                         }} initial={{opacity:0}} animate={{opacity:1}}  {...getSuggestionItemProps(suggestion, { style })}>
                           {suggestion.description}
                         </motion.div>
@@ -156,7 +156,7 @@ function SearchBox({List1hook,updateList1Hook,List2hook,updateList2Hook,List3hoo
             </PlacesAutocomplete>
             <motion.button initial={{scale:'1'}} layout="true" transition={{duration:10,type:'spring'}} whileHover={{scale:'1.3',duration:'5'}} whileTap={{scale:'1.1',duration:'5'}} type="button" class="btn btn-dark" onClick={onclickHandle}>Go</motion.button>
 
-  </div>
+  </motion.div>
   );
 }
 

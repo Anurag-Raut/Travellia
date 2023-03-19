@@ -16,7 +16,7 @@ function FeatureCard(props) {
           data-scroll=""
           data-scroll-sticky="true"
           class="f-card-img1 d-flex"
-          src={require("../../images/img5.png")}
+          src="https://www.linkpicture.com/q/img5_4.png"
         ></img>
 
         <div id="YOURID1" style={{ width: "90vh" }} class="re">
@@ -63,7 +63,7 @@ function FeatureCard(props) {
           data-scroll=""
           data-scroll-sticky="true"
           class="f-card-img1 d-flex"
-          src={require("../../images/img7.jpg")}
+          src="https://i.ibb.co/gr0jGy3/img7.jpg"
         ></img>
 
         <div id="YOURID2" style={{ width: "90vh" }} class="re">
@@ -110,7 +110,7 @@ function FeatureCard(props) {
           data-scroll=""
           data-scroll-sticky="true"
           class="f-card-img1 d-flex"
-          src={require("../../images/img8.jpg")}
+          src="https://www.linkpicture.com/q/img8_4.jpg"
         ></img>
 
         <div id="YOURID3" style={{ width: "90vh" }} class="re">

@@ -10,7 +10,7 @@ return(
 
         <div class='sec first-sec d-flex'>
             <h1 class='h1-scroll' data-scroll data-scroll-speed='-3' >PARIS</h1>
-        <img data-scroll data-scroll-speed='3' class='scroll-img' align="right" src={require("../../images/img1.jpg")} alt="" />
+        <img data-scroll data-scroll-speed='3' class='scroll-img' align="right" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi4k27Jdewo7SA4wsAdnGtOF2uUDO6-ubluiSl8_H_JRM_t_BW52rvl2XsarVaa0v1zsM&usqp=CAU" alt="" />
 
         </div>
         <div class='d-flex'>
@@ -25,12 +25,12 @@ return(
             <span class='f-text' data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.07" data-scroll-speed="-4">K</span>
             </div>
            
-        <img data-scroll  data-scroll-speed='-1' class='scroll-img' align="right" src={require("../../images/img2.jpg")} alt="" />
+        <img data-scroll  data-scroll-speed='-1' class='scroll-img' align="right" src="https://images.pexels.com/photos/1525612/pexels-photo-1525612.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
 
         </div>
 
         <div class='sec third-sec d-flex'>
-        <img data-scroll data-scroll-speed='4' class='scroll-img' align="right" src={require("../../images/img3.jpg")} alt="" />
+        <img data-scroll data-scroll-speed='4' class='scroll-img' align="right" src="https://images.pexels.com/photos/1510595/pexels-photo-1510595.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
         <div style={{backgroundColor:'transparent'}} data-scroll class='lerp-wrap lerp-2'data-scroll-speed="-4">
 
         <span data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18" data-scroll-speed="6">J</span>

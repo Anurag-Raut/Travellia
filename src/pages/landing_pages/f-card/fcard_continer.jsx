@@ -9,14 +9,14 @@ function FeatureSection(){
                 <div id='f-div-id' class='d-flex'>
 
                 <span class="lerp-wrap" data-scroll="">
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.18" data-scroll-speed="-9">F</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.14" data-scroll-speed="-9">E</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.12" data-scroll-speed="-9">A</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.10" data-scroll-speed="-9" >T</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.10" data-scroll-speed="-9">U</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.12" data-scroll-speed="-9">R</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.14" data-scroll-speed="-9">E</span>
-            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.16" data-scroll-speed="-9">S</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.18" data-scroll-speed="-8">F</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.14" data-scroll-speed="-8">E</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.12" data-scroll-speed="-8">A</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.10" data-scroll-speed="-8" >T</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.10" data-scroll-speed="-8">U</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.12" data-scroll-speed="-8">R</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.14" data-scroll-speed="-8">E</span>
+            <span class='f-text-feat' data-scroll="" data-scroll-delay="0.16" data-scroll-speed="-8">S</span>
           </span>
 
                 </div>

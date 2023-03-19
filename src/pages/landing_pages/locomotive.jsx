@@ -12,7 +12,7 @@ function Loco({ start, lscroll, setlscroll, ref }) {
       {
         el: scrollEl,
         smooth: true,
-        multiplier: 0.7,
+        multiplier: 0.8,
       },
       []
     );

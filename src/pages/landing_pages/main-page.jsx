@@ -111,19 +111,19 @@ function App() {
      
      
       setTimeout(() => {
-        console.log('hemlooooooooooooo')
-        var element = document.getElementById("search-id");
-        var element2 = document.getElementById("search-box-id");
+      //   console.log('hemlooooooooooooo')
+      //   var element = document.getElementById("search-id");
+      //   var element2 = document.getElementById("search-box-id");
         var navelement = document.getElementById("nav-id");
-        element.style.setProperty("z-index", "100");
+      //   element.style.setProperty("z-index", "100");
         navelement.style.setProperty("z-index", "2");
 
-        element.style.setProperty("scale", "100%");
-        element.style.setProperty("background-color", "transparent");
-        element2.style.setProperty("scale", "100%");
+      //   element.style.setProperty("scale", "100%");
+      //   element.style.setProperty("background-color", "transparent");
+      //   element2.style.setProperty("scale", "100%");
 
-        // element.style.setProperty("opacity", "0.1");
-        element.style.setProperty("transition", "1s");
+      //   // element.style.setProperty("opacity", "0.1");
+      //   element.style.setProperty("transition", "2s");
         setloading(0);
         setgif(0);
       }, 3000);
